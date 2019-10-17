@@ -1,0 +1,14 @@
+map is sorted in stl 
+set is sorted in stl
+
+priority_queue is max heap by default.
+priority_queue of pair is also max heap by first element.
+
+priority_queue for userdefine data type need operator oveloading  in structure but note that do not confuse with sort funtion comparator. sort function comparator do not need any operator ovelaoding, simply write bool cmp(){}.
+
+
+arr  are pass as reference by default 
+
+vector we must pass as vector<int> & v as formal parameter in function.
+
+

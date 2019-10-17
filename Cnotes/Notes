@@ -1,0 +1,182 @@
+
+1 read string with spaces use gets(str); or scanf ("%[^\n]s", name)
+
+
+2.
+
+rading string with spaces and multiple strings in input
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+
+int t;
+cin>>t;
+cin.ignore();
+string s;
+//getline(cin,s);
+while(t--){
+
+
+getline(cin,s); 
+cout<<s<<endl;
+}
+
+return 0;
+}
+
+3
+substr function in string need how many char you need after from start index.
+
+4
+typedef long long ll;
+5
+graph with adjacency list
+
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+   
+    int t;
+    cin>>t;
+    while(t--){
+        int v,e,a,b;
+        cin>>v>>e;
+        cout<<e<<endl;
+        vector<pair<int,int>> vec[v];
+        for(int i=0;i<e;i++){
+          cin>>a>>b;  
+          vec[a].push_back(make_pair(b,0));
+          vec[b].push_back(make_pair(a,0));
+        }
+        for(int i=0;i<v;i++){
+           cout<<i;
+           for(int j=0;j<vec[i].size();j++){
+               cout<<"->"<<vec[i][j].first;
+           }
+           cout<<endl;
+        }
+    }
+	return 0;
+}
+
+5
+for char arr in c ,we do not need to check the length of string.
+we can do as follows
+char str[100000];
+for(int i=0;str[i];i++){
+     printf("%c",str[i]);
+}
+also note that str[i] will be treated as character
+ 
+6 how pass array to funtion in c++
+
+void swap(int j,int k,int arr[]){
+    int temp=arr[j];
+    arr[j]=arr[k];
+    arr[k]=temp;
+}
+
+swap(j,j+1,arr);
+
+7.
+get the following input and map find function
+
+3
+sam 99912222
+tom 11122222
+harry 12299933
+sam
+edward
+harry
+
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <map>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    map<string,long int> book;
+    int n=0;
+    long int number=0;
+    string name;
+    cin>>n;
+    cin.ignore();
+    for(int i=0;i<n;i++){
+        cin>>name;
+        cin>>number;
+        book[name]=number;
+    }
+    while(cin>>name){
+        if(book.find(name)!=book.end()){
+            cout<<name<<"="<<book[name]<<endl;
+        }else{
+            cout<<"Not found"<<endl;
+        }
+
+    }
+    return 0;
+}
+
+8.
+//to take following input
+3
+2 6 13
+1 8
+2 4 5 67 8
+
+
+   int an;
+    cin>>an;
+    vector<vector<int>> vec;
+    cin.ignore();
+    for(int i=0;i<an;i++){
+         int c;
+         vector<int> v;
+         string line;
+         getline(cin, line);
+         istringstream iss(line);
+         while ( iss >> c) {    
+             v.push_back(c);
+         }
+         vec.push_back(v);        
+    }
+    /*vector<vector<int> > vec{ { 2, 6, 12 }, 
+                              { 1, 9 }, 
+                              { 23, 34, 90, 2000 } };*/
+
+
+9 character to integer 
+Well, in ASCII code, the numbers (digits) start from 48. All you need to do is:
+
+int x = (int)character - 48;
+
+10
+How to return a local array from a C/C++ function?
+#include <stdio.h> 
+  
+int* fun(int *arr) 
+{ 
+    /* Some operations on arr[] */
+    arr[0] = 10; 
+    arr[1] = 20; 
+  
+    return arr; 
+} 
+  
+int main() 
+{ 
+    int arr[100]; 
+    int* ptr = fun(arr); 
+    printf("%d %d", ptr[0], ptr[1]); 
+    return 0; 
+} 
+

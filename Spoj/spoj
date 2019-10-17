@@ -1,0 +1,18 @@
+TRECOUNT - Tree Count
+PT07X - Vertex Cover
+TREEORD - Tree _order
+TREE1 - Tree
+VFMUL - Very Fast Multiplication
+CNTTREE - Trees Again
+
+e is an easy BFS problem, which can be solved by applying BFS twice. If you are not familiar with the term Breadth First Search (BFS), then i suggest you to first of all understand BFS, then try solving this problem.
+
+In this problem, our job is to minimize the number of TTL we need to send from the router to the farthest computer. So all we need to do is find a node, at which we can keep our router so that, it needs to send minimum number of TTLs to the farthest computer.
+
+This can be done by finding the longest path in given graph, and we can keep our router at the center of the longest path (longest distance b/w two computers). By applying BFS twice, we can find the longest path easily.
+
+If you want to understand, how we gonna find longest path, please see this blog, otherwise continue reading!
+
+In the first BFS we will apply BFS from a random node, I chose 1 for this purpose. And our bfs(1) will return the farthest node from '1'. Then we will apply second BFS from the farthest node selected in bfs(1). This time the farthest distance from selected node will be the longest path in the graph!
+
+That's all you need to do, easy, isn't it? 

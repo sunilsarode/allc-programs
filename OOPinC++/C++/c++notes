@@ -1,0 +1,5 @@
+# new keywords to allcoate memory
+# delete keyword to delete memory
+# NULL is same  as nullptr
+
+# auto data type must be intialise with some value. example auto age=0;

@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
+int rowN[]={-1,1,0,0};
+int colN[]={0,0,1,-1};
+int f1(int **graph, int **dist, int n)
+{
+    queue<pair<int,int>> q;
+    dist[0][0]=graph[0][0];
+    q.push({0,0});
+    while(!q.empty())
+    {
+        pair<int,int> p=q.front();
+        int a=p.first;
+        int b=p.second;
+        q.pop();
+        for(int i=0;i<4;i++)
+        {
+            int x=a+rowN[i];
+            int y=b+colN[i];
+            
+            if(x>=0 && x<n && y>=0 && y<n && dist[x][y]>dist[a][b]+graph[x][y])
+            {
+                dist[x][y]=dist[a][b]+graph[x][y];
+                q.push({x,y});
+            }
+        }
+        
+    }
+    return dist[n-1][n-1];
+    
+}
+int main()
+ {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int **graph=new int*[n];
+        for(int i=0;i<n;i++)
+        {
+            graph[i]=new int[n];
+            for(int j=0;j<n;j++)
+            {
+                cin>>graph[i][j];
+            }
+        }
+        
+        int **dist=new int*[n];
+        for(int i=0;i<n;i++)
+        {
+            dist[i]=new int[n];
+            for(int j=0;j<n;j++)
+            {
+                dist[i][j]=INT_MAX;
+            }
+        }
+        
+        cout<<f1(graph,dist,n)<<endl;
+    }
+	//code
+	return 0;
+}
