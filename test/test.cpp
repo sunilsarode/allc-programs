@@ -3,7 +3,13 @@
 using namespace std;
 vector<string> working;
 
+void fun(){
+
+ return 0;
+}
+
 int main(){
+
 working.push_back("1");
 string s="1";
 string s2="123";
