@@ -8,7 +8,7 @@ using namespace std;
 
 int inrange(int i,int j){
  
-    if(i<0||i>=3||j<0||j>=3){
+    if(i<0||i>=1000||j<0||j>=1000){
           return false;
     }
     
@@ -42,13 +42,15 @@ void bfs(int i,int j,vector<vector<int>>& vis,vector<vector<int>>& dis){
 	  while(!q.empty()){
 	     Data in=q.front();
 	     q.pop();
-	     cout<<in.i<<" "<<in.j<<endl;
+	     //cout<<in.i<<" "<<in.j<<endl;
 
-             /* if(in.i==0&&in.j==0){
+             /* if(in.i==2&&in.j==2){
                  cout<<in.dis<<endl;
                  dis[in.i][in.j]=in.dis;
+                 
                  break;
-              }*/	
+               
+              }	*/
 
 	     for(int i=0;i<8;i++){
 	   
@@ -56,7 +58,7 @@ void bfs(int i,int j,vector<vector<int>>& vis,vector<vector<int>>& dis){
 		      int y=arry[i]+in.j;
 
 		     if(inrange(x,y)&&vis[x][y]==0){
-			 vis[x][y]==1;
+			 vis[x][y]=1;
 			 Data newd;
 			 newd.i=x;
 			 newd.j=y;
@@ -68,26 +70,28 @@ void bfs(int i,int j,vector<vector<int>>& vis,vector<vector<int>>& dis){
 	    }
 	 }
 
+   /*  for(int i=0;i<3;i++){
+       for(int j=0;j<3;j++){
+            cout<<vis[i][j]<<" ";
+       }
+       cout<<endl;
+     }
+    */
 }
 
 
 int main(){
 
 
-  //vector<vector<int>> arr(8,vector<int>(8,0));
+
   vector<vector<int>> vis(1000,vector<int>(1000,0));
   vector<vector<int>> dis(1000,vector<int>(1000,0));
 
- //for(int i=0;i<1000;i++){
-   // for(int j=0;j<1000;j++){
-         vector<vector<int>> vis(3,vector<int>(3,0)); 
-         bfs(0,0,vis,dis);
-    //}
- //}
+  bfs(0,0,vis,dis);
 
  
 
-/*int t;
+int t;
 cin>>t;
 
 while(t--){
@@ -100,7 +104,7 @@ while(t--){
   cout<<dis[a][b]<<endl;
 
 
-}*/
+}
 
 
 

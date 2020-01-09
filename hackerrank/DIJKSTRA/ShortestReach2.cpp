@@ -82,7 +82,8 @@ void dijkstra(int s,vector<pair<ll,int>>* vec){
    if(vis[x]==true){
      continue;
    }
-   
+    
+  /* same node can be in priority queue, with differenr distance but we will take one with minimum distance and so rest of the nodes are still in queue but we had process this veretx once we are done..and hence above we check and continue if it is already visited */
    vis[x]=true;
 
    for(int i=0;i<vec[x].size();i++){
