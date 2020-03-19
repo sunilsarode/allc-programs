@@ -5,6 +5,8 @@ struct Node{
    int data;
    struct Node* next;
 };
+
+
 void printList(struct Node* head){
      while(head){
         printf("%d ",head->data);
