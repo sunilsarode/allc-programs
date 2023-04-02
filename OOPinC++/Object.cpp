@@ -12,7 +12,7 @@ class Data{
      love=val;
    }
    ~Data(){
-      cout<<"Destruct "
+      cout<<"Destruct ";
    }
    void display(){
      cout<<love<<endl;
