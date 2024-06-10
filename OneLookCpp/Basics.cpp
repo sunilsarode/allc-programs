@@ -40,6 +40,13 @@ int main() {
 
         printMap(mp);
 
+
+        auto itmp=mp.find("Sunil");
+        if(itmp !=mp.end()){
+            cout<<"Value of Sunil "<<mp["Sunil"]<<"\n";
+        }
+        cout<<"\n";
+
         mp.erase("Sunil");
 
         printMap(mp);

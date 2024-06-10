@@ -2,40 +2,33 @@
 
 using namespace std;
 
-#define max 1000
-
-typedef long long int ll;
-
-vector<int> vis(max,0);
-vector<int> par(max,0);
-
-
-
-bool dfs(vector<pair<ll,int>> adj[],int v){
+bool dfs(unordered_map<int,vector<int>>& mp,int v,int p,vector<int>& vis){
     vis[v]=1;
- 
-    for(int i=0;i<adj[v].size();i++){
-         int x=adj[v][i].second;
-         if(vis[x]==1&&par[v]!=x){//jar node visited ahe ani maja parent sudha nahi ahe mag cycle ahe
-                return true;//cycle is detected 
+    
+    for(int i=0;i<mp[v].size();i++){
+         int x=mp[v][i];
+         if(x ==p){
+             continue;
          }
-         if(vis[x]==0){
-             par[x]=v;
-             if(dfs(adj,x)){//do not discover more node as you detect the cycle , return true from here
-                return true;
-             } 
+         if(vis[x]==1){
+             return true;
          }
-    }  
+         if(dfs(mp,x,v,vis)){
+             return true;
+         }
+         
+    }
+     
    return false;
 }
 
-bool detectCycle(vector<pair<ll,int>> adj[],int n){
+bool detectCycle(unordered_map<int,vector<int>> mp,int n,vector<int>& vis){
 
-  par[0]=-1;
+
   for(int i=0;i<n;i++){
       
       if(vis[i]==0){
-           if(dfs(adj,i)){
+           if(dfs(mp,i,-1,vis)){
                return true;
           }
       }
@@ -44,24 +37,18 @@ bool detectCycle(vector<pair<ll,int>> adj[],int n){
   return false;
 }
 
-int main(){
 
-int n,e,x,y;
-
-
-vector<pair<ll,int>> adj[max];
-
-cin>>n>>e;
-
-for(int i=0;i<e;i++){
-   cin>>x>>y;
-   adj[x].push_back(make_pair(0,y));
-   adj[y].push_back(make_pair(0,y));
-}
-
-
- bool ans=detectCycle(adj,n);
- cout<<ans<<endl;
-
-return 0;	
+string cycleDetection (vector<vector<int>>& edges, int n, int m)//coding nijas
+{
+    unordered_map<int,vector<int>> mp;
+    vector<int> vis(n+1,0);
+    for(auto x:edges){
+        mp[x[0]].push_back(x[1]);
+        mp[x[1]].push_back(x[0]);
+    }
+    if(detectCycle(mp, n, vis)){
+        return "Yes";
+    }else{
+        return "No";
+    }
 }
